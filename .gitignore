@@ -16,7 +16,7 @@ DerivedData
 .idea/
 *.hmap
 *.xccheckout
-
+bin/
 # Make stuff
 brightness
 *.o
