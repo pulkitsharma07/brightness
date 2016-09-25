@@ -11,17 +11,10 @@ all: build
 build: brightness
 
 brightness: brightness.o
+	mkdir bin
 	$(CC) $(CFLAGS) $(ARCH_FLAGS) -framework IOKit -framework ApplicationServices \
 		-Wl,-U,_CGDisplayModeGetPixelWidth \
 		-Wl,-U,_CGDisplayModeGetPixelHeight \
-		$^ -o $@
+		$^ -o bin/brightness
 
-%.o: %.c
-	$(CC) $(CPPFLAGS) $(CFLAGS) $(ARCH_FLAGS) $< -c -o $@
 
-clean:
-	/bin/rm -f brightness *.o
-
-install:
-	/bin/mkdir -p $(prefix)/bin
-	/usr/bin/install -s -m 0755 brightness $(prefix)/bin
